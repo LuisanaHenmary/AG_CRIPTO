@@ -32,7 +32,7 @@ public class GeneticAlgorithm {
 
             for (int j = 0; j < num_wallets; j++) {
                 // Cada individuo es un vector de xi, donde xi es un gen y esta entre 0 y 1
-                individual += Double.toString(ri.nextDouble(1.0)) + " " ;
+                individual += Double.toString(ri.nextDouble(1.0)) + " " ; //La unica forma que se me ocurrio generar valores de 0 a 1
             }
 
             population[i][0] = Integer.toString(i);
@@ -213,7 +213,9 @@ public class GeneticAlgorithm {
             individual = population[mutated][1].split(" ");
             int gen = ri.nextInt(num_wallets); // Del individuo selecciona un gen aleatorio
 
-            individual[gen] = Double.toString(ri.nextDouble(1.0)); // Le da un nuevo valor al gen
+            // Le da un nuevo valor al gen
+            individual[gen] = Double.toString(ri.nextDouble(1.0)); //La unica forma que se me ocurrio generar valores de 0 a 1
+
 
             for (int j = 0; j < num_wallets; j++) {
                 new_individual += individual[j] + " ";
