@@ -3,7 +3,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int rows = 6, n_winners = 3, generation = 1, max_generation = 5;
+        int rows = 6, n_winners = 3, generation = 1, max_generation = 30;
 
         double[][] asset_r = {
 

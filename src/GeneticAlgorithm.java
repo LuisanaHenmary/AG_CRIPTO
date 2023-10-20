@@ -20,6 +20,24 @@ public class GeneticAlgorithm {
         num_wallets = nw;
     }
 
+    private static double [] GenerarNumerosAleatorios(int n){
+        double[] numerosAleatorios = new double[n];
+        double suma = 0;
+
+        // Genera n-1 números aleatorios
+        Random random = new Random();
+        for (int i = 0; i < n - 1; i++) {
+            double numeroAleatorio = random.nextDouble();
+            numerosAleatorios[i] = numeroAleatorio;
+            suma += numeroAleatorio;
+        }
+
+        // Calcula el último número necesario para que la suma sea igual a 1
+        numerosAleatorios[n - 1] = 1 - suma;
+
+        return numerosAleatorios;
+    }
+
     public void initPopulation(){
         // Inicializa la poblacion
 
@@ -30,10 +48,12 @@ public class GeneticAlgorithm {
         for (int i = 0; i < couples.length; i++) {
             individual = "";
 
+            double [] x = GenerarNumerosAleatorios(num_wallets);
             for (int j = 0; j < num_wallets; j++) {
                 // Cada individuo es un vector de xi, donde xi es un gen y esta entre 0 y 1
-                individual += Double.toString(ri.nextDouble(1.0)) + " " ; //La unica forma que se me ocurrio generar valores de 0 a 1
+                individual += Double.toString(x[i]) + " " ; //La unica forma que se me ocurrio generar valores de 0 a 1
             }
+
 
             population[i][0] = Integer.toString(i);
             population[i][1] = individual;
@@ -214,7 +234,7 @@ public class GeneticAlgorithm {
             int gen = ri.nextInt(num_wallets); // Del individuo selecciona un gen aleatorio
 
             // Le da un nuevo valor al gen
-            individual[gen] = Double.toString(ri.nextDouble(1.0)); //La unica forma que se me ocurrio generar valores de 0 a 1
+            individual[gen] = Double.toString(ri.nextDouble()); //La unica forma que se me ocurrio generar valores de 0 a 1
 
 
             for (int j = 0; j < num_wallets; j++) {
